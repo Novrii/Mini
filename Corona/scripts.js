@@ -1,5 +1,13 @@
 const app = document.getElementById('root')
 
+const chart_id = document.createElement('canvas')
+chart_id.setAttribute('id', 'myChart')
+chart_id.style.marginBottom = '35px'
+const arr_lokasi = []
+const data_posi = []
+const data_semb = []
+const data_meni = []
+
 const logo = document.createElement('img')
 logo.src = 'logo_corona.png'
 
@@ -10,8 +18,10 @@ const container = document.createElement('div')
 container.setAttribute('class', 'container')
 
 app.appendChild(logo)
+app.appendChild(chart_id)
 app.appendChild(table)
 app.appendChild(container)
+
 
 // inside table
 const thead = document.createElement('thead')
@@ -103,3 +113,66 @@ request.onload = function() {
 
 request.send()
 request_indo.send()
+
+// chart provinsi
+
+var request_data = new XMLHttpRequest()
+request_data.open('GET', 'https://api.kawalcorona.com/indonesia/provinsi/', true)
+request_data.onload = function() {
+    // Begin accessing JSON data here
+    var data = JSON.parse(this.response)
+    if (request_data.status >= 200 && request_data.status < 400) {
+        data.forEach(Kota => {
+            // console.log(Kota.attributes.Provinsi)
+
+            arr_lokasi.push(Kota.attributes.Provinsi)
+            data_posi.push(Kota.attributes.Kasus_Posi)
+            data_semb.push(Kota.attributes.Kasus_Semb)
+            data_meni.push(Kota.attributes.Kasus_Meni)
+            
+
+        })
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+
+        // The data for our dataset
+        data: {
+            labels: arr_lokasi,
+            datasets: [
+                {
+                    label: 'Positif',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: data_posi
+                },
+                {
+                    label: 'Sembuh',
+                    backgroundColor: 'rgb(66, 203, 245)',
+                    borderColor: 'rgb(66, 203, 245)',
+                    data: data_semb
+                },
+                {
+                    label: 'Meninggal',
+                    backgroundColor: 'rgb(245, 221, 66)',
+                    borderColor: 'rgb(245, 221, 66)',
+                    data: data_meni
+                }
+            ]
+        },
+
+        // Configuration options go here
+        options: {}
+        });
+
+    } else {
+        const errorMessage = document.createElement('marquee')
+        errorMessage.textContent = `Gah, it's not working!`
+        app.appendChild(errorMessage)
+    }
+}
+
+request_data.send()
+
