@@ -8,52 +8,107 @@ const data_posi = []
 const data_semb = []
 const data_meni = []
 
-const logo = document.createElement('img')
-logo.src = 'logo_corona.png'
+// const logo = document.createElement('img')
+// logo.src = 'logo_corona.png'
 
 const table = document.createElement('table')
 table.setAttribute('class', 'table is-fullwidth is-striped')
 
-const container = document.createElement('div')
-container.setAttribute('class', 'container')
+// const container = document.createElement('div')
+// container.setAttribute('class', 'container')
 
 const columns = document.createElement('div')
 columns.setAttribute('class', 'columns is-multiline is-mobile')
 
 const columns_indo = document.createElement('div')
-columns_indo.setAttribute('class', 'columns')
+columns_indo.setAttribute('class', 'columns is-mobile')
 
-app.appendChild(logo)
-app.appendChild(chart_id)
+const columns_glob = document.createElement('div')
+columns_glob.setAttribute('class', 'columns is-mobile')
+
+// app.appendChild(logo)
+// app.appendChild(chart_id)
+app.appendChild(columns_glob)
 app.appendChild(columns_indo)
 app.appendChild(columns)
-app.appendChild(table)
-app.appendChild(container)
+// app.appendChild(table)
+// app.appendChild(container)
+
+// column global
 
 
 // inside table
-const thead = document.createElement('thead')
-const tr = document.createElement('tr')
-const th_lokasi = document.createElement('th')
-th_lokasi.textContent = `Lokasi`
-const th_positif = document.createElement('th')
-th_positif.textContent = `Positif`
-const th_sembuh = document.createElement('th')
-th_sembuh.textContent = `Sembuh`
-const th_meninggal = document.createElement('th')
-th_meninggal.textContent = `Meninggal`
+// const thead = document.createElement('thead')
+// const tr = document.createElement('tr')
+// const th_lokasi = document.createElement('th')
+// th_lokasi.textContent = `Lokasi`
+// const th_positif = document.createElement('th')
+// th_positif.textContent = `Positif`
+// const th_sembuh = document.createElement('th')
+// th_sembuh.textContent = `Sembuh`
+// const th_meninggal = document.createElement('th')
+// th_meninggal.textContent = `Meninggal`
 
-const tbody = document.createElement('tbody')
-// apendChildTable
-table.appendChild(thead)
-table.appendChild(tbody)
-// apendChildThead
-thead.appendChild(tr)
-// apendChildTr
-tr.appendChild(th_lokasi)
-tr.appendChild(th_positif)
-tr.appendChild(th_sembuh)
-tr.appendChild(th_meninggal)
+// const tbody = document.createElement('tbody')
+// // apendChildTable
+// table.appendChild(thead)
+// table.appendChild(tbody)
+// // apendChildThead
+// thead.appendChild(tr)
+// // apendChildTr
+// tr.appendChild(th_lokasi)
+// tr.appendChild(th_positif)
+// tr.appendChild(th_sembuh)
+// tr.appendChild(th_meninggal)
+
+// var req_glob_posi = new XMLHttpRequest()
+// req_glob_posi.open('GET', 'https://api.kawalcorona.com/positif', true)
+// req_glob_posi.onload = function() {
+//     var data_posi_glob = JSON.parse(this.response)
+//     console.log(data_posi_glob)
+
+//     if (req_glob_posi.status >= 200 && req_glob_posi < 400){
+//         console.log(data_posi_glob)
+//             const column_posi_glob = document.createElement('div')
+//             column_posi_glob.setAttribute('class', 'column')
+
+//             const card_posi_glob = document.createElement('div')
+//             card_posi_glob.setAttribute('class', 'card')
+
+//             const card_content_p_g = document.createElement('div')
+//             card_content_p_g.setAttribute('class', 'card-content')
+            
+//             const p_content_p_g = document.createElement('p')
+//             p_content_p_g.setAttribute('class', 'title')
+//             p_content_p_g.textContent = data_posi_glob.value
+
+//             const footer_p_g = document.createElement('footer')
+//             footer_p_g.setAttribute('class', 'card-footer')
+
+//             const p_positif_p_g = document.createElement('p')
+//             p_positif_p_g.setAttribute('class', 'card-footer-item')
+
+//             const span_danger_p_g = document.createElement('span')
+//             span_danger_p_g.setAttribute('class', 'tag is-danger')
+//             span_danger_p_g.textContent = `Positif`
+
+//             columns_glob.appendChild(column_posi_glob)
+//             column_posi_glob.appendChild(card_posi_glob)
+//             card_posi_glob.appendChild(card_content_p_g)
+//             card_content_p_g.appendChild(p_content_p_g)
+//             card_posi_glob.appendChild(footer_p_g)
+//             footer_p_g.appendChild(p_positif_p_g)
+//             p_positif_p_g.appendChild(span_danger_p_g)
+    
+//     }
+//     else {
+//         const errorMessage = document.createElement('marquee')
+//         errorMessage.textContent = `Gah, it's not working!`
+//         app.appendChild(errorMessage)
+//     }
+// }
+
+// req_glob_posi.send()
 
 var request_indo = new XMLHttpRequest()
 request_indo.open('GET', 'https://api.kawalcorona.com/indonesia/', true)
@@ -126,21 +181,21 @@ request_indo.onload = function() {
             p_meni_indo.appendChild(span_warning_indo)
             p_meni_indo.appendChild(span_meni_indo)
 
-            const tr_indo = document.createElement('tr')
-            const td_lokasi_n = document.createElement('td')
-            td_lokasi_n.textContent = Negara.name
-            const td_positif_n = document.createElement('td')
-            td_positif_n.textContent = Negara.positif
-            const td_sembuh_n = document.createElement('td')
-            td_sembuh_n.textContent = Negara.sembuh
-            const td_meninggal_n = document.createElement('td')
-            td_meninggal_n.textContent = Negara.meninggal
+            // const tr_indo = document.createElement('tr')
+            // const td_lokasi_n = document.createElement('td')
+            // td_lokasi_n.textContent = Negara.name
+            // const td_positif_n = document.createElement('td')
+            // td_positif_n.textContent = Negara.positif
+            // const td_sembuh_n = document.createElement('td')
+            // td_sembuh_n.textContent = Negara.sembuh
+            // const td_meninggal_n = document.createElement('td')
+            // td_meninggal_n.textContent = Negara.meninggal
 
-            tbody.appendChild(tr_indo)
-            tr_indo.appendChild(td_lokasi_n)
-            tr_indo.appendChild(td_positif_n)
-            tr_indo.appendChild(td_sembuh_n)
-            tr_indo.appendChild(td_meninggal_n)
+            // tbody.appendChild(tr_indo)
+            // tr_indo.appendChild(td_lokasi_n)
+            // tr_indo.appendChild(td_positif_n)
+            // tr_indo.appendChild(td_sembuh_n)
+            // tr_indo.appendChild(td_meninggal_n)
         })
     }
     else {
@@ -223,21 +278,21 @@ request.onload = function() {
             p_meni.appendChild(span_warning)
             p_meni.appendChild(span_meni)
 
-            const tr_body = document.createElement('tr')
-            const td_lokasi = document.createElement('td')
-            td_lokasi.textContent = Kota.attributes.Provinsi
-            const td_positif = document.createElement('td')
-            td_positif.textContent = Kota.attributes.Kasus_Posi
-            const td_sembuh = document.createElement('td')
-            td_sembuh.textContent = Kota.attributes.Kasus_Semb
-            const td_meninggal = document.createElement('td')
-            td_meninggal.textContent = Kota.attributes.Kasus_Meni
+            // const tr_body = document.createElement('tr')
+            // const td_lokasi = document.createElement('td')
+            // td_lokasi.textContent = Kota.attributes.Provinsi
+            // const td_positif = document.createElement('td')
+            // td_positif.textContent = Kota.attributes.Kasus_Posi
+            // const td_sembuh = document.createElement('td')
+            // td_sembuh.textContent = Kota.attributes.Kasus_Semb
+            // const td_meninggal = document.createElement('td')
+            // td_meninggal.textContent = Kota.attributes.Kasus_Meni
 
-            tbody.appendChild(tr_body)
-            tr_body.appendChild(td_lokasi)
-            tr_body.appendChild(td_positif)
-            tr_body.appendChild(td_sembuh)
-            tr_body.appendChild(td_meninggal)
+            // tbody.appendChild(tr_body)
+            // tr_body.appendChild(td_lokasi)
+            // tr_body.appendChild(td_positif)
+            // tr_body.appendChild(td_sembuh)
+            // tr_body.appendChild(td_meninggal)
 
         })
     } else {
@@ -269,39 +324,39 @@ request_data.onload = function() {
 
         })
 
-        const ctx = document.getElementById('myChart').getContext('2d');
-        const chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'bar',
+        // const ctx = document.getElementById('myChart').getContext('2d');
+        // const chart = new Chart(ctx, {
+        // // The type of chart we want to create
+        // type: 'doughnut',
 
-        // The data for our dataset
-        data: {
-            labels: arr_lokasi,
-            datasets: [
-                {
-                    label: 'Positif',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: data_posi
-                },
-                {
-                    label: 'Sembuh',
-                    backgroundColor: 'rgb(66, 203, 245)',
-                    borderColor: 'rgb(66, 203, 245)',
-                    data: data_semb
-                },
-                {
-                    label: 'Meninggal',
-                    backgroundColor: 'rgb(245, 221, 66)',
-                    borderColor: 'rgb(245, 221, 66)',
-                    data: data_meni
-                }
-            ]
-        },
+        // // The data for our dataset
+        // data: {
+        //     labels: arr_lokasi,
+        //     datasets: [
+        //         {
+        //             label: 'Positif',
+        //             backgroundColor: 'rgb(255, 99, 132)',
+        //             borderColor: 'rgb(255, 99, 132)',
+        //             data: data_posi
+        //         },
+        //         {
+        //             label: 'Sembuh',
+        //             backgroundColor: 'rgb(66, 203, 245)',
+        //             borderColor: 'rgb(66, 203, 245)',
+        //             data: data_semb
+        //         },
+        //         {
+        //             label: 'Meninggal',
+        //             backgroundColor: 'rgb(245, 221, 66)',
+        //             borderColor: 'rgb(245, 221, 66)',
+        //             data: data_meni
+        //         }
+        //     ]
+        // },
 
-        // Configuration options go here
-        options: {}
-        });
+        // // Configuration options go here
+        // options: {}
+        // });
 
     } else {
         const errorMessage = document.createElement('marquee')
