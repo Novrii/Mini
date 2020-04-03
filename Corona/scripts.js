@@ -24,17 +24,19 @@ const columns_indo = document.createElement('div')
 columns_indo.setAttribute('class', 'columns is-mobile')
 
 const columns_glob = document.createElement('div')
-columns_glob.setAttribute('class', 'columns is-mobile')
+columns_glob.setAttribute('class', 'columns')
 
+const title_glob = document.createElement('h1')
+title_glob.setAttribute('class', 'subtitle has-text-centered')
+title_glob.textContent = `Data Global`
 // app.appendChild(logo)
 // app.appendChild(chart_id)
+app.appendChild(title_glob)
 app.appendChild(columns_glob)
 app.appendChild(columns_indo)
 app.appendChild(columns)
 // app.appendChild(table)
 // app.appendChild(container)
-
-// column global
 
 
 // inside table
@@ -61,54 +63,141 @@ app.appendChild(columns)
 // tr.appendChild(th_sembuh)
 // tr.appendChild(th_meninggal)
 
-// var req_glob_posi = new XMLHttpRequest()
-// req_glob_posi.open('GET', 'https://api.kawalcorona.com/positif', true)
-// req_glob_posi.onload = function() {
-//     var data_posi_glob = JSON.parse(this.response)
-//     console.log(data_posi_glob)
 
-//     if (req_glob_posi.status >= 200 && req_glob_posi < 400){
-//         console.log(data_posi_glob)
-//             const column_posi_glob = document.createElement('div')
-//             column_posi_glob.setAttribute('class', 'column')
+var request_p_g = new XMLHttpRequest()
+request_p_g.open('GET', 'https://api.kawalcorona.com/positif/', true)
+request_p_g.onload = function() {
+    // Begin accessing JSON data here
+    var data_p_g = JSON.parse(this.response)
+    if (request_p_g.status >= 200 && request_p_g.status < 400) {
+        // console.log(data_p_g.value)
+        const column_posi_glob = document.createElement('div')
+        column_posi_glob.setAttribute('class', 'column')
 
-//             const card_posi_glob = document.createElement('div')
-//             card_posi_glob.setAttribute('class', 'card')
+        const card_posi_glob = document.createElement('div')
+        card_posi_glob.setAttribute('class', 'card')
 
-//             const card_content_p_g = document.createElement('div')
-//             card_content_p_g.setAttribute('class', 'card-content')
-            
-//             const p_content_p_g = document.createElement('p')
-//             p_content_p_g.setAttribute('class', 'title')
-//             p_content_p_g.textContent = data_posi_glob.value
+        const card_content_p_g = document.createElement('div')
+        card_content_p_g.setAttribute('class', 'card-content')
+        
+        const p_content_p_g = document.createElement('p')
+        p_content_p_g.setAttribute('class', 'title')
+        p_content_p_g.textContent = data_p_g.value
 
-//             const footer_p_g = document.createElement('footer')
-//             footer_p_g.setAttribute('class', 'card-footer')
+        const footer_p_g = document.createElement('footer')
+        footer_p_g.setAttribute('class', 'card-footer')
 
-//             const p_positif_p_g = document.createElement('p')
-//             p_positif_p_g.setAttribute('class', 'card-footer-item')
+        const p_positif_p_g = document.createElement('p')
+        p_positif_p_g.setAttribute('class', 'card-footer-item')
 
-//             const span_danger_p_g = document.createElement('span')
-//             span_danger_p_g.setAttribute('class', 'tag is-danger')
-//             span_danger_p_g.textContent = `Positif`
+        const span_danger_p_g = document.createElement('span')
+        span_danger_p_g.setAttribute('class', 'tag is-danger')
+        span_danger_p_g.textContent = `Positif`
 
-//             columns_glob.appendChild(column_posi_glob)
-//             column_posi_glob.appendChild(card_posi_glob)
-//             card_posi_glob.appendChild(card_content_p_g)
-//             card_content_p_g.appendChild(p_content_p_g)
-//             card_posi_glob.appendChild(footer_p_g)
-//             footer_p_g.appendChild(p_positif_p_g)
-//             p_positif_p_g.appendChild(span_danger_p_g)
-    
-//     }
-//     else {
-//         const errorMessage = document.createElement('marquee')
-//         errorMessage.textContent = `Gah, it's not working!`
-//         app.appendChild(errorMessage)
-//     }
-// }
+        columns_glob.appendChild(column_posi_glob)
+        column_posi_glob.appendChild(card_posi_glob)
+        card_posi_glob.appendChild(card_content_p_g)
+        card_content_p_g.appendChild(p_content_p_g)
+        card_posi_glob.appendChild(footer_p_g)
+        footer_p_g.appendChild(p_positif_p_g)
+        p_positif_p_g.appendChild(span_danger_p_g)
+    }
+    else {
+        const errorMessage = document.createElement('marquee')
+        errorMessage.textContent = `Gah, it's not working!`
+        app.appendChild(errorMessage)
+    }
+}
 
-// req_glob_posi.send()
+var request_s_g = new XMLHttpRequest()
+request_s_g.open('GET', 'https://api.kawalcorona.com/sembuh/', true)
+request_s_g.onload = function() {
+    // Begin accessing JSON data here
+    var data_s_g = JSON.parse(this.response)
+    if (request_s_g.status >= 200 && request_s_g.status < 400) {
+        // console.log(data_s_g.value)
+        const column_semb_glob = document.createElement('div')
+        column_semb_glob.setAttribute('class', 'column')
+
+        const card_semb_glob = document.createElement('div')
+        card_semb_glob.setAttribute('class', 'card')
+
+        const card_content_s_g = document.createElement('div')
+        card_content_s_g.setAttribute('class', 'card-content')
+        
+        const p_content_s_g = document.createElement('p')
+        p_content_s_g.setAttribute('class', 'title')
+        p_content_s_g.textContent = data_s_g.value
+
+        const footer_s_g = document.createElement('footer')
+        footer_s_g.setAttribute('class', 'card-footer')
+
+        const p_positif_s_g = document.createElement('p')
+        p_positif_s_g.setAttribute('class', 'card-footer-item')
+
+        const span_danger_s_g = document.createElement('span')
+        span_danger_s_g.setAttribute('class', 'tag is-primary')
+        span_danger_s_g.textContent = `Sembuh`
+
+        columns_glob.appendChild(column_semb_glob)
+        column_semb_glob.appendChild(card_semb_glob)
+        card_semb_glob.appendChild(card_content_s_g)
+        card_content_s_g.appendChild(p_content_s_g)
+        card_semb_glob.appendChild(footer_s_g)
+        footer_s_g.appendChild(p_positif_s_g)
+        p_positif_s_g.appendChild(span_danger_s_g)
+    }
+    else {
+        const errorMessage = document.createElement('marquee')
+        errorMessage.textContent = `Gah, it's not working!`
+        app.appendChild(errorMessage)
+    }
+}
+
+var request_m_g = new XMLHttpRequest()
+request_m_g.open('GET', 'https://api.kawalcorona.com/meninggal/', true)
+request_m_g.onload = function() {
+    // Begin accessing JSON data here
+    var data_m_g = JSON.parse(this.response)
+    if (request_m_g.status >= 200 && request_m_g.status < 400) {
+        // console.log(data_m_g.value)
+        const column_meni_glob = document.createElement('div')
+        column_meni_glob.setAttribute('class', 'column')
+
+        const card_meni_glob = document.createElement('div')
+        card_meni_glob.setAttribute('class', 'card')
+
+        const card_content_m_g = document.createElement('div')
+        card_content_m_g.setAttribute('class', 'card-content')
+        
+        const p_content_m_g = document.createElement('p')
+        p_content_m_g.setAttribute('class', 'title')
+        p_content_m_g.textContent = data_m_g.value
+
+        const footer_m_g = document.createElement('footer')
+        footer_m_g.setAttribute('class', 'card-footer')
+
+        const p_positif_m_g = document.createElement('p')
+        p_positif_m_g.setAttribute('class', 'card-footer-item')
+
+        const span_danger_m_g = document.createElement('span')
+        span_danger_m_g.setAttribute('class', 'tag is-warning')
+        span_danger_m_g.textContent = `Meninggal`
+
+        columns_glob.appendChild(column_meni_glob)
+        column_meni_glob.appendChild(card_meni_glob)
+        card_meni_glob.appendChild(card_content_m_g)
+        card_content_m_g.appendChild(p_content_m_g)
+        card_meni_glob.appendChild(footer_m_g)
+        footer_m_g.appendChild(p_positif_m_g)
+        p_positif_m_g.appendChild(span_danger_m_g)
+    }
+    else {
+        const errorMessage = document.createElement('marquee')
+        errorMessage.textContent = `Gah, it's not working!`
+        app.appendChild(errorMessage)
+    }
+}
 
 var request_indo = new XMLHttpRequest()
 request_indo.open('GET', 'https://api.kawalcorona.com/indonesia/', true)
@@ -116,7 +205,9 @@ request_indo.onload = function() {
     // Begin accessing JSON data here
     var data_indo = JSON.parse(this.response)
     if (request_indo.status >= 200 && request_indo.status < 400) {
+        // console.log(data_indo.value)
         data_indo.forEach(Negara => {
+            // console.log(Negara)
             const column_indo = document.createElement('div')
             column_indo.setAttribute('class', 'column')
 
@@ -304,66 +395,69 @@ request.onload = function() {
 
 request.send()
 request_indo.send()
+request_p_g.send()
+request_s_g.send()
+request_m_g.send()
 
 // chart provinsi
 
-var request_data = new XMLHttpRequest()
-request_data.open('GET', 'https://api.kawalcorona.com/indonesia/provinsi/', true)
-request_data.onload = function() {
-    // Begin accessing JSON data here
-    var data = JSON.parse(this.response)
-    if (request_data.status >= 200 && request_data.status < 400) {
-        data.forEach(Kota => {
-            // console.log(Kota.attributes.Provinsi)
+// var request_data = new XMLHttpRequest()
+// request_data.open('GET', 'https://api.kawalcorona.com/indonesia/provinsi/', true)
+// request_data.onload = function() {
+//     // Begin accessing JSON data here
+//     var data = JSON.parse(this.response)
+//     if (request_data.status >= 200 && request_data.status < 400) {
+//         data.forEach(Kota => {
+//             // console.log(Kota.attributes.Provinsi)
 
-            arr_lokasi.push(Kota.attributes.Provinsi)
-            data_posi.push(Kota.attributes.Kasus_Posi)
-            data_semb.push(Kota.attributes.Kasus_Semb)
-            data_meni.push(Kota.attributes.Kasus_Meni)
+//             arr_lokasi.push(Kota.attributes.Provinsi)
+//             data_posi.push(Kota.attributes.Kasus_Posi)
+//             data_semb.push(Kota.attributes.Kasus_Semb)
+//             data_meni.push(Kota.attributes.Kasus_Meni)
             
 
-        })
+//         })
 
-        // const ctx = document.getElementById('myChart').getContext('2d');
-        // const chart = new Chart(ctx, {
-        // // The type of chart we want to create
-        // type: 'doughnut',
+//         // const ctx = document.getElementById('myChart').getContext('2d');
+//         // const chart = new Chart(ctx, {
+//         // // The type of chart we want to create
+//         // type: 'doughnut',
 
-        // // The data for our dataset
-        // data: {
-        //     labels: arr_lokasi,
-        //     datasets: [
-        //         {
-        //             label: 'Positif',
-        //             backgroundColor: 'rgb(255, 99, 132)',
-        //             borderColor: 'rgb(255, 99, 132)',
-        //             data: data_posi
-        //         },
-        //         {
-        //             label: 'Sembuh',
-        //             backgroundColor: 'rgb(66, 203, 245)',
-        //             borderColor: 'rgb(66, 203, 245)',
-        //             data: data_semb
-        //         },
-        //         {
-        //             label: 'Meninggal',
-        //             backgroundColor: 'rgb(245, 221, 66)',
-        //             borderColor: 'rgb(245, 221, 66)',
-        //             data: data_meni
-        //         }
-        //     ]
-        // },
+//         // // The data for our dataset
+//         // data: {
+//         //     labels: arr_lokasi,
+//         //     datasets: [
+//         //         {
+//         //             label: 'Positif',
+//         //             backgroundColor: 'rgb(255, 99, 132)',
+//         //             borderColor: 'rgb(255, 99, 132)',
+//         //             data: data_posi
+//         //         },
+//         //         {
+//         //             label: 'Sembuh',
+//         //             backgroundColor: 'rgb(66, 203, 245)',
+//         //             borderColor: 'rgb(66, 203, 245)',
+//         //             data: data_semb
+//         //         },
+//         //         {
+//         //             label: 'Meninggal',
+//         //             backgroundColor: 'rgb(245, 221, 66)',
+//         //             borderColor: 'rgb(245, 221, 66)',
+//         //             data: data_meni
+//         //         }
+//         //     ]
+//         // },
 
-        // // Configuration options go here
-        // options: {}
-        // });
+//         // // Configuration options go here
+//         // options: {}
+//         // });
 
-    } else {
-        const errorMessage = document.createElement('marquee')
-        errorMessage.textContent = `Gah, it's not working!`
-        app.appendChild(errorMessage)
-    }
-}
+//     } else {
+//         const errorMessage = document.createElement('marquee')
+//         errorMessage.textContent = `Gah, it's not working!`
+//         app.appendChild(errorMessage)
+//     }
+// }
 
-request_data.send()
+// request_data.send()
 
